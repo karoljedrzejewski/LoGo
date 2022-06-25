@@ -59,12 +59,12 @@ namespace LoGo.Controllers
         {
             var Logo = _context.Logos.Find(id);
 
-            if (Device == null)
+            if (Logo == null)
             {
                 return NotFound();
             }
 
-            _context.Devices.Remove(Device);
+            _context.Logos.Remove(Logo);
             _context.SaveChanges();
 
             return NoContent();
