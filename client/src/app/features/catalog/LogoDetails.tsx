@@ -9,6 +9,8 @@ export default function LogoDetails() {
     const [logo, setLogo] = useState<Logo | null>(null);
     const [loading, setLoading] = useState(true);
 
+
+
 useEffect(() =>{
     axios.get(`http://localhost:5000/api/logos/${id}`)
     .then(response => setLogo(response.data))
@@ -22,7 +24,7 @@ if (!logo) return <h3>Logo not found</h3>
     return (
         <Grid container sx={{mt: 10}} spacing={6}>
             <Grid item xs={6}>
-                <img src={logo.pictureUrl} alt={logo.name} style={{width: '100%'}}/>
+                <img src={("../") + logo.pictureUrl} alt={logo.name} style={{width: '40%'}}/>
             </Grid>
             <Grid>
                 <Typography variant='h3'>{logo.name}</Typography>
@@ -41,7 +43,7 @@ if (!logo) return <h3>Logo not found</h3>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Availability</TableCell>
-                                <TableCell>{logo.availability}</TableCell>
+                                <TableCell>{logo.availability ? 'Available' : 'Sold'}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Characteristics</TableCell>
